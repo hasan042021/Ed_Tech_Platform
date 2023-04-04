@@ -1,13 +1,15 @@
+import VideosContextProvider from "../contexts/providers/VideosContextProvider";
 import Login from "../pages/Authentication/Login";
 import Registration from "../pages/Authentication/Registration";
-import Assignment from "../pages/assignment/Assignment";
-import AssignmentMark from "../pages/assignmentMark/AssignmentMark";
-import CoursePlayer from "../pages/coursePlayer/CoursePlayer";
-import Dashboard from "../pages/dashboard/Dashboard";
-import LeaderBoard from "../pages/leaderboard/LeaderBoard";
-import Quizz from "../pages/quiz/Quizz";
-import QuizzesAdmin from "../pages/quizzesAdmin/QuizzesAdmin";
-import Videos from "../pages/videos/Videos";
+import CoursePlayer from "../pages/CoursePlayer";
+import CourseVideo from "../pages/CourseVideo";
+import LeaderBoard from "../pages/LeaderBoard";
+import VideoQuizz from "../pages/VideoQuizz";
+import Assignment from "../pages/admin/Assignment";
+import AssignmentMark from "../pages/admin/AssignmentMark";
+import Dashboard from "../pages/admin/Dashboard";
+import Quizzes from "../pages/admin/Quizzes";
+import Videos from "../pages/admin/Videos";
 
 export const studentPublicRoutes = [
   {
@@ -32,9 +34,13 @@ export const studentPrivateRoutes = [
     component: LeaderBoard,
   },
   {
-    path: "quiz",
+    path: "quiz/:videoId",
     name: "Quiz",
-    component: Quizz,
+    component: VideoQuizz,
+  },
+  {
+    path: "course-player/:videoId",
+    component: CourseVideo,
   },
 ];
 
@@ -45,23 +51,25 @@ export const adminPrivateRoutes = [
     component: Dashboard,
   },
   {
+    path: "videos",
+    name: "Videos",
+    component: Videos,
+    provider: VideosContextProvider,
+  },
+  {
     path: "assignment",
     name: "Assignment",
     component: Assignment,
+  },
+
+  {
+    path: "quizzes",
+    name: "Quizzes",
+    component: Quizzes,
   },
   {
     path: "assignment-mark",
     name: "Assignment Mark",
     component: AssignmentMark,
-  },
-  {
-    path: "quizzes",
-    name: "Quizzes",
-    component: QuizzesAdmin,
-  },
-  {
-    path: "videos",
-    name: "Videos",
-    component: Videos,
   },
 ];

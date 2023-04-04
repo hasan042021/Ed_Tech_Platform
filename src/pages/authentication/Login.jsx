@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useMatch, useNavigate } from "react-router-dom";
+import logoImage from "../../assets/image/learningportal.svg";
+import { useLoginMutation } from "../../features/auth/authApi";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const adminLogin = useMatch("/admin");
+  const [login, { data, isLoading, isError, isSuccess: isLoginSuccess }] =
+    useLoginMutation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // navigation after login
+    if (adminLogin && data?.user.role === "admin") {
+      navigate("/admin/dashboard");
+    }
+    if (!adminLogin && isLoginSuccess && data?.user.role === "student") {
+      navigate("/course-player");
+    }
+  }, [isLoginSuccess, adminLogin, data]);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({
+      email,
+      password,
+    });
+  };
   return (
-    <section class="py-6 bg-primary h-screen grid place-items-center">
-      <div class="mx-auto max-w-md px-5 lg:px-0">
+    <section className="py-6 bg-primary h-screen grid place-items-center">
+      <div className="mx-auto max-w-md px-5 lg:px-0">
         <div>
-          <img class="h-12 mx-auto" src="../assets/image/learningportal.svg" />
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-slate-100">
-            Sign in to Student Account
+          <img className="h-12 mx-auto" src={logoImage} />
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
+            Sign in to {adminLogin ? "Admin" : "Student"} Account
           </h2>
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
+        <form onSubmit={handleLogin} className="mt-8 space-y-6">
           <input type="hidden" name="remember" value="true" />
-          <div class="rounded-md shadow-sm -space-y-px">
+          <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="email-address" class="sr-only">
+              <label for="email-address" className="sr-only">
                 Email address
               </label>
               <input
@@ -23,12 +50,14 @@ const Login = () => {
                 type="email"
                 autocomplete="email"
                 required
-                class="login-input rounded-t-md"
+                className="login-input rounded-t-md"
                 placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label for="password" class="sr-only">
+              <label for="password" className="sr-only">
                 Password
               </label>
               <input
@@ -37,28 +66,36 @@ const Login = () => {
                 type="password"
                 autocomplete="current-password"
                 required
-                class="login-input rounded-b-md"
+                className="login-input rounded-b-md"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
 
-          <div class="flex items-center justify-end">
-            <div class="text-sm">
-              <a class="font-medium text-violet-600 hover:text-violet-500">
-                Create New Account
-              </a>
+          {!adminLogin && (
+            <div className="flex items-center justify-end">
+              <div className="text-sm">
+                <Link
+                  to="/register"
+                  className="font-medium text-violet-600 hover:text-violet-500"
+                >
+                  Create New Account
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
 
           <div>
             <button
               type="submit"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
             >
               Sign in
             </button>
           </div>
+          {isLoginSuccess && "Okay"}
         </form>
       </div>
     </section>

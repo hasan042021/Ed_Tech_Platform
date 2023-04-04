@@ -20,12 +20,23 @@ function App() {
           </Route>
           <Route path="/admin" element={<Login />} />
           <Route path="/admin/*" element={<AdminOutlet />}>
-            {adminPrivateRoutes.map((adminRoute) => (
-              <Route
-                path={adminRoute.path}
-                element={<adminRoute.component />}
-              />
-            ))}
+            {adminPrivateRoutes.map((adminRoute) =>
+              adminRoute.provider ? (
+                <Route
+                  path={adminRoute.path}
+                  element={
+                    <adminRoute.provider>
+                      <adminRoute.component />
+                    </adminRoute.provider>
+                  }
+                />
+              ) : (
+                <Route
+                  path={adminRoute.path}
+                  element={<adminRoute.component />}
+                />
+              )
+            )}
           </Route>
         </Routes>
       </Router>

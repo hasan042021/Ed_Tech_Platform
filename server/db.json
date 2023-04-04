@@ -48,6 +48,26 @@
       "role": "student",
       "name": "Arif",
       "id": 7
+    },
+    {
+      "email": "hasan2@learnwithsumit.com",
+      "password": "$2a$10$6UZumk60pkfUlSZUTfAFZOvNWuRfVaw07BsRKUKrlA2.bPV2IbtnC",
+      "name": "hasan2",
+      "role": "student",
+      "id": 8
+    },
+    {
+      "email": "hasan@learnwithsumit.com",
+      "password": "$2a$10$3.55cT3Lhzych4tMCbxs6O5XRJPszK4Fw4XFDHwC7hDBGv4uOhjim",
+      "name": "hasan",
+      "id": 9
+    },
+    {
+      "email": "hasan3@learnwithsumit.com",
+      "password": "$2a$10$ARezShr0BWKVhEi/XyNlJu1a1Ee6GKLFXEZ4XTlGqPlux24E.D3Qa",
+      "name": "hasan3",
+      "role": "student",
+      "id": 10
     }
   ],
   "videos": [
@@ -63,11 +83,38 @@
     {
       "id": 2,
       "title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
-      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
+      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier. ",
       "url": "https://www.youtube.com/embed/E9_R88eKcBM",
       "views": "91.2K",
       "duration": "31:30",
       "createdAt": "2023-02-24T17:59:00.000Z"
+    },
+    {
+      "title": "Learn React Portal In 12 Minutes By Building A Modal",
+      "description": "React is a complex library to use and the fact that everything is nested inside a component can make certain tasks much more difficult. One of those tasks is rendering popups and modals. It doesn't make sense for them to be rendered inside a component, but you need to access them inside a component.",
+      "url": "https://www.youtube.com/embed/LyLa7dU5tp8",
+      "views": "180.2k",
+      "duration": "12:10",
+      "createdAt": "2023-04-04T08:57:10.315Z",
+      "id": 3
+    },
+    {
+      "title": "Build a Popup With JavaScript",
+      "description": "If you have used the web anytime in the last 5 years then you have most definitely run into an abundance of popups, also known as modals, which are quickly becoming one of the most popular components in web development.",
+      "url": "https://www.youtube.com/embed/MBaw_6cPmAw",
+      "views": "12.5k",
+      "duration": "16:14",
+      "createdAt": "2023-04-04T08:58:38.523Z",
+      "id": 4
+    },
+    {
+      "title": "How To Build Sortable Drag & Drop With Vanilla Javascript",
+      "description": "Drag and drop is something that nearly every web application needs, but it can be tricky to build from scratch. That is why in this video I will be showing you exactly how to build a sortable drag and drop list with very little JavaScript.",
+      "url": "https://www.youtube.com/embed/jfYWwQrtzzY",
+      "views": "40k",
+      "duration": "22:21",
+      "createdAt": "2023-04-04T08:59:51.458Z",
+      "id": 5
     }
   ],
   "assignments": [
