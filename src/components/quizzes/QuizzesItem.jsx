@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../../contexts/contexts";
+import { useDeleteQuizMutation } from "../../features/quizzes/quizzesApi";
 
-const QuizzesItem = () => {
+const QuizzesItem = ({ details }) => {
+  const { question, video_title, id } = details;
+  const [deleteQuiz, { isLoading, isError, isSuccess }] =
+    useDeleteQuizMutation();
+  const { setShowModal, mode, setData, setMode, showModal } =
+    useContext(ModalContext) || {};
+
+  const handleModal = (workingMode) => {
+    setMode(workingMode);
+    setData(details);
+    setShowModal(true);
+  };
+  const handleDelete = () => {
+    deleteQuiz(id);
+  };
   return (
     <tr>
-      <td className="table-td">
-        Quiz 3 - What is the difference between null and undefined in
-        JavaScript?
-      </td>
-      <td className="table-td">
-        #2 JavaScript Tips and Tricks - JavaScript Job Interview Questions.
-      </td>
+      <td className="table-td">{question}</td>
+      <td className="table-td">{video_title}</td>
       <td className="table-td flex gap-x-2 justify-center">
         <svg
           fill="none"
@@ -17,6 +28,7 @@ const QuizzesItem = () => {
           stroke-width="1.5"
           stroke="currentColor"
           className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
+          onClick={handleDelete}
         >
           <path
             stroke-linecap="round"
@@ -30,6 +42,7 @@ const QuizzesItem = () => {
           stroke-width="1.5"
           stroke="currentColor"
           className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
+          onClick={() => handleModal("edit")}
         >
           <path
             stroke-linecap="round"

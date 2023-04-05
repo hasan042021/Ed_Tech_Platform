@@ -1,3 +1,5 @@
+import AssignmentContextProvider from "../contexts/providers/AssignmentContextProvider";
+import QuizzesContextProvider from "../contexts/providers/QuizzesContextProvider";
 import VideosContextProvider from "../contexts/providers/VideosContextProvider";
 import Login from "../pages/Authentication/Login";
 import Registration from "../pages/Authentication/Registration";
@@ -60,12 +62,14 @@ export const adminPrivateRoutes = [
     path: "assignment",
     name: "Assignment",
     component: Assignment,
+    provider: AssignmentContextProvider,
   },
 
   {
     path: "quizzes",
     name: "Quizzes",
     component: Quizzes,
+    provider: QuizzesContextProvider,
   },
   {
     path: "assignment-mark",

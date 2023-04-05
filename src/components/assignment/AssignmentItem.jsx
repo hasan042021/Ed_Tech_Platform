@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../../contexts/contexts";
+import { useDeleteAssingmentMutation } from "../../features/assignments/assignmentsApi";
 
-const AssignmentItem = () => {
+const AssignmentItem = ({ details }) => {
+  const { title, video_title, totalMark, id } = details;
+  const [deleteAssignment, { isLoading, isError, isSuccess }] =
+    useDeleteAssingmentMutation();
+  const { setShowModal, mode, setData, setMode, showModal } =
+    useContext(ModalContext) || {};
+  // console.log(info);
+
+  const handleModal = (workingMode) => {
+    setMode(workingMode);
+    setData(details);
+    setShowModal(true);
+  };
+  const handleDelete = () => {
+    deleteAssignment(id);
+  };
   return (
     <tr>
-      <td className="table-td">Assignment 1 - Scoreboard Application</td>
-      <td className="table-td">
-        JavaScript Bangla Tutorial | JS AJAX | XMLHttp
-      </td>
-      <td className="table-td">100</td>
+      <td className="table-td">{title}</td>
+      <td className="table-td">{video_title}</td>
+      <td className="table-td">{totalMark}</td>
       <td className="table-td flex gap-x-2">
         <svg
           fill="none"
@@ -15,6 +30,7 @@ const AssignmentItem = () => {
           stroke-width="1.5"
           stroke="currentColor"
           className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
+          onClick={handleDelete}
         >
           <path
             stroke-linecap="round"
@@ -28,6 +44,7 @@ const AssignmentItem = () => {
           stroke-width="1.5"
           stroke="currentColor"
           className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
+          onClick={() => handleModal("edit")}
         >
           <path
             stroke-linecap="round"
