@@ -70,26 +70,24 @@ const QuizzesModal = () => {
   const [checked2, setChecked2] = useState(false);
   const [option3, setOption3] = useState("");
   const [checked3, setChecked3] = useState(false);
-  const [checked4, setChecked4] = useState(false);
   const [option4, setOption4] = useState("");
+  const [checked4, setChecked4] = useState(false);
 
   useEffect(() => {
-    console.log(mode);
     if (mode === "edit" && data?.id) {
-      console.log(data);
-      const sorted = data.options;
+      const options = data.options;
       setQuestion(data.question);
       setVideoTitle(data.video_title);
       setVideoId(data.video_id);
-
-      setChecked1(sorted[0].isCorrect);
-      setOption1(sorted[0].option);
-      setChecked2(sorted[1].isCorrect);
-      setOption2(sorted[1].option);
-      setChecked3(sorted[2].isCorrect);
-      setOption3(sorted[2].option);
-      setChecked4(sorted[3].isCorrect);
-      setOption4(sorted[3].option);
+      console.log(options);
+      setChecked1(options[0].isCorrect);
+      setOption1(options[0].option);
+      setChecked2(options[1].isCorrect);
+      setOption2(options[1].option);
+      setChecked3(options[2].isCorrect);
+      setOption3(options[2].option);
+      setChecked4(options[3].isCorrect);
+      setOption4(options[3].option);
     } else {
       setQuestion("");
       setVideoTitle("");
@@ -121,12 +119,10 @@ const QuizzesModal = () => {
     const dataset = e.target.options[e.target.selectedIndex].dataset;
 
     const video = JSON.parse(dataset.video);
-    console.log(video.id);
     setVideoId(video.id);
   };
   const handleAddQuizz = (e) => {
     e.preventDefault();
-    console.log("adding");
     const data = {
       question,
       video_id: videoId,
@@ -138,12 +134,11 @@ const QuizzesModal = () => {
         { id: 4, option: option4, isCorrect: checked4 },
       ],
     };
-    console.log(data);
     addQuizz(data);
   };
   const handleEditQuizz = (e) => {
     e.preventDefault();
-    const data = {
+    const editedData = {
       question,
       video_id: videoId,
       video_title: videoTitle,
@@ -154,11 +149,10 @@ const QuizzesModal = () => {
         { id: 4, option: option4, isCorrect: checked4 },
       ],
     };
-    console.log(data);
     editQuizz({
       id: data?.id,
       videoId,
-      data,
+      data: editedData,
     });
   };
 
@@ -226,7 +220,8 @@ const QuizzesModal = () => {
             <input
               type="checkbox"
               class="appearance-none default:ring-2  indeterminate:bg-gray-300 "
-              value={checked1}
+              checked={checked1}
+              defaultChecked={checked1}
               onChange={(e) => setChecked1(e.target.checked)}
             />
             <input
@@ -242,7 +237,8 @@ const QuizzesModal = () => {
             <input
               type="checkbox"
               class="appearance-none indeterminate:bg-gray-300 "
-              value={checked2}
+              checked={checked2}
+              defaultChecked={checked2}
               onChange={(e) => setChecked2(e.target.checked)}
             />
             <input
@@ -258,7 +254,8 @@ const QuizzesModal = () => {
             <input
               type="checkbox"
               class="appearance-none indeterminate:bg-gray-300 "
-              value={checked3}
+              checked={checked3}
+              defaultChecked={checked3}
               onChange={(e) => setChecked3(e.target.checked)}
             />
             <input
@@ -274,7 +271,8 @@ const QuizzesModal = () => {
             <input
               type="checkbox"
               class="appearance-none indeterminate:bg-gray-300 ml-2"
-              value={checked4}
+              checked={checked4}
+              defaultChecked={checked4}
               onChange={(e) => setChecked4(e.target.checked)}
             />
             <input

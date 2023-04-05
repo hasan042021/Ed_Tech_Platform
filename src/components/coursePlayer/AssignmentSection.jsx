@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useAddToAssignmentMarkMutation } from "../../features/assignmentMark/assignmentMarkApi";
 
-const AssignmentSection = ({ show }) => {
+const AssignmentSection = ({ assignmentInfo, show }) => {
+  const [addToAssignment, {}] = useAddToAssignmentMarkMutation();
+  const [repo, setRepo] = useState("");
+  const [info, setInfo] = useState();
+  const { id: student_id, name: student_name } = useSelector(
+    (state) => state.auth.user
+  );
+  useEffect(() => {
+    setInfo(assignmentInfo);
+    console.log(assignmentInfo);
+  }, [assignmentInfo]);
+
+  useEffect(() => {
+    console.log(assignmentInfo);
+  }, [repo]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(info);
+    const data = {
+      student_id,
+      student_name,
+      assignment_id: info[0].id,
+      title: info[0].title,
+      totalMark: info[0].totalMark,
+      createdAt: new Date().toISOString(),
+      mark: 0,
+      repo_link: repo,
+      status: "pending",
+    };
+
+    addToAssignment(data);
+    setRepo("");
+  };
   return (
     show && (
       <>
@@ -9,7 +43,10 @@ const AssignmentSection = ({ show }) => {
           style={{ backgroundColor: "#35B3EE", height: "1px", border: "none" }}
         />
         <div class="w-full max-w-xs my-4 bg-transparent">
-          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <form
+            onSubmit={handleSubmit}
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          >
             <div>
               <span>Total mark of this assignment </span>
               {"    "}
@@ -31,12 +68,14 @@ const AssignmentSection = ({ show }) => {
                   color: "black",
                   padding: 5,
                 }}
-                placeholder="Username"
+                placeholder="Github repository link"
+                value={repo}
+                onChange={(e) => setRepo(e.target.value)}
               />
             </div>
 
             <div class="flex items-center justify-between my-2">
-              <button class="btn" type="button">
+              <button class="btn" type="submit">
                 Submit
               </button>
             </div>

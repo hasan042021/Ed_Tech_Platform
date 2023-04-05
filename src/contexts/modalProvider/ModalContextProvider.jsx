@@ -8,11 +8,9 @@ export const ModalContextProvider = ({ children, initialState }) => {
   const [mode, setMode] = useState(initialState?.mode);
   const [data, setData] = useState(undefined);
   function closeModal() {
-    console.log(data);
     setData(undefined);
     setShowModal(false);
     setMode("add");
-    console.log(data);
   }
 
   return (

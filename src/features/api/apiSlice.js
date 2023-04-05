@@ -5,6 +5,15 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_REACT_APP_API_URL,
   }),
-  tagTypes: ["Videos", "Video", "Assignments", "Assignment"],
+  tagTypes: [
+    "Videos",
+    "Video",
+    "Assignments",
+    "Assignment",
+    "Quizzes",
+    "AllMarks",
+    "Mark",
+    "StudentMark",
+  ],
   endpoints: (builder) => ({}),
 });

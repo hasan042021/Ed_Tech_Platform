@@ -10,6 +10,7 @@ const VideoDescription = ({ info }) => {
   const { title, createdAt, description, id } = info;
   const { id: studentId } = useSelector((state) => state.auth.user);
   const { data, isLoading, isError } = useGetAssignmentQuery(id);
+
   const [assignmentId, setAssignmentId] = useState(undefined);
   const [shouldCheck, setShouldChekc] = useState(false);
   const { data: assignmentSubmitted } =
@@ -22,6 +23,7 @@ const VideoDescription = ({ info }) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     if (data?.length === 0) {
+      console.log(data);
       setAssignmentId(undefined);
       setShouldChekc(true);
     }
@@ -70,7 +72,7 @@ const VideoDescription = ({ info }) => {
           No assignment related to this video
         </h2>
       ) : data?.length > 0 && assignmentSubmitted?.length === 0 ? (
-        <AssignmentSection show={show} />
+        <AssignmentSection assignmentInfo={data} show={show} />
       ) : data?.length > 0 && assignmentSubmitted?.length > 0 ? (
         <div className={`${!show && "hidden"}`}>
           <h2 className={`mt-4  text-slate-400 font-semibold `}>
@@ -78,11 +80,11 @@ const VideoDescription = ({ info }) => {
           </h2>
           <div>
             <span>Your score is </span>
-            <button className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-              {assignmentSubmitted[0]?.mark > 0
+            <span className=" px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+              {assignmentSubmitted[0]?.status === "published"
                 ? assignmentSubmitted[0]?.mark
-                : 0}
-            </button>
+                : "Pending for evaluation"}
+            </span>
           </div>
         </div>
       ) : null}

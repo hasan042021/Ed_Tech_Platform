@@ -4,6 +4,7 @@ import { useDeleteQuizMutation } from "../../features/quizzes/quizzesApi";
 
 const QuizzesItem = ({ details }) => {
   const { question, video_title, id } = details;
+
   const [deleteQuiz, { isLoading, isError, isSuccess }] =
     useDeleteQuizMutation();
   const { setShowModal, mode, setData, setMode, showModal } =
@@ -11,6 +12,8 @@ const QuizzesItem = ({ details }) => {
 
   const handleModal = (workingMode) => {
     setMode(workingMode);
+    console.log(details);
+    console.log("here in modal");
     setData(details);
     setShowModal(true);
   };

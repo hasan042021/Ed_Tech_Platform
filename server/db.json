@@ -148,12 +148,12 @@
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
       "options": [
         {
-          "id": "1",
+          "id": 1,
           "option": "A function that is called after a certain time interval",
           "isCorrect": true
         },
         {
-          "id": "2",
+          "id": 2,
           "option": "A function that is called after a certain time interval",
           "isCorrect": false
         },
@@ -176,14 +176,14 @@
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
       "options": [
         {
-          "id": "1",
+          "id": 1,
           "option": "A search bar where the results are displayed as you type.",
           "isCorrect": true
         },
         {
-          "id": "2",
+          "id": 2,
           "option": "A button that performs an action when clicked.",
-          "isCorrect": false
+          "isCorrect": true
         },
         {
           "id": 3,
@@ -224,34 +224,6 @@
           "isCorrect": false
         }
       ]
-    },
-    {
-      "question": "3 - test",
-      "video_id": 2,
-      "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
-      "options": [
-        {
-          "id": 1,
-          "option": "dsf",
-          "isCorrect": false
-        },
-        {
-          "id": 2,
-          "option": "dsf",
-          "isCorrect": false
-        },
-        {
-          "id": 3,
-          "option": "dsf",
-          "isCorrect": true
-        },
-        {
-          "id": 4,
-          "option": "sdf",
-          "isCorrect": true
-        }
-      ],
-      "id": 4
     }
   ],
   "assignmentMark": [
@@ -263,9 +235,9 @@
       "title": "Assignment 1 - Implement Debounce Function",
       "createdAt": "2021-01-15T15:17:01.727Z",
       "totalMark": 100,
-      "mark": 0,
+      "mark": 70,
       "repo_link": "https://github.com/Learn-with-Sumit/assignment-1",
-      "status": "pending"
+      "status": "published"
     },
     {
       "id": 2,
@@ -290,6 +262,18 @@
       "mark": 50,
       "repo_link": "https://github.com/Learn-with-Sumit/assignment-1",
       "status": "published"
+    },
+    {
+      "student_id": 3,
+      "student_name": "Akash Ahmed",
+      "assignment_id": 2,
+      "title": "Assignment 2 - Implement Best Practices",
+      "totalMark": 100,
+      "createdAt": "2023-04-05T19:23:00.489Z",
+      "mark": 100,
+      "repo_link": "https://github.com/Learn-with-Sumit/think-in-a-redux-way",
+      "status": "published",
+      "id": 9
     }
   ],
   "quizMark": [

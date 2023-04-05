@@ -95,7 +95,6 @@ const Login = () => {
               Sign in
             </button>
           </div>
-          {isLoginSuccess && "Okay"}
         </form>
       </div>
     </section>

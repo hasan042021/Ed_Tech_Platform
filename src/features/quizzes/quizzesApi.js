@@ -21,7 +21,7 @@ const quizzesApi = apiSlice.injectEndpoints({
     editQuiz: builder.mutation({
       query: ({ id, videoId, data }) => ({
         url: `/quizzes/${id}`,
-        method: "POST",
+        method: "PATCH",
         body: data,
       }),
       invalidatesTags: (result, error, arg) => [
@@ -32,6 +32,7 @@ const quizzesApi = apiSlice.injectEndpoints({
     deleteQuiz: builder.mutation({
       query: (id) => ({
         url: `/quizzes/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Quizzes"],
     }),
