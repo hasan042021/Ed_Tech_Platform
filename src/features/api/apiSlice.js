@@ -14,7 +14,9 @@ export const apiSlice = createApi({
     "AllMarks",
     "Mark",
     "StudentMark",
-    "Quiz",
+    "QuizMark",
+    "SubmittedQuiz",
+    "SingleQuizMark",
   ],
   endpoints: (builder) => ({}),
 });

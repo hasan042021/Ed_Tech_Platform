@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/common/Layout";
 import QuizzItems from "../components/videoQuizz/QuizzItems";
-import { useAddQuizMarkMutation } from "../features/quizMark/quizMarkApi";
+import {
+  useAddQuizMarkMutation,
+  useGetQuizSubmittedQuery,
+} from "../features/quizMark/quizMarkApi";
 import { useGetQuizzesQuery } from "../features/quizzes/quizzesApi";
 import { useGetVideoQuery } from "../features/videos/videosApi";
 import { calculateQuizMark } from "../utils/calculateQuizMark";
@@ -18,6 +21,17 @@ const VideoQuizz = () => {
     (state) => state.auth.user
   );
   const [addQuizMark, { isSuccess }] = useAddQuizMarkMutation();
+  const [shouldCheck, setShouldCheck] = useState(false);
+
+  const { data: submittedData } = useGetQuizSubmittedQuery(
+    {
+      videoId,
+      studentId: student_id,
+    },
+    {
+      skip: !shouldCheck,
+    }
+  );
   useEffect(() => {
     const initialState = data?.map((q) => {
       return {
@@ -39,6 +53,15 @@ const VideoQuizz = () => {
       navigate("/course-player");
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    if (student_id && videoId) {
+      setShouldCheck(true);
+    }
+  }, [student_id, videoId]);
+  useEffect(() => {
+    console.log(submittedData);
+  }, [submittedData]);
 
   const handleQuizSubmission = () => {
     const { correct, wrong, mark, totalQuiz } = calculateQuizMark(
@@ -68,14 +91,25 @@ const VideoQuizz = () => {
             formData={formData}
             setFormData={setFormData}
           />
-
-          <button
-            type="button"
-            onClick={handleQuizSubmission}
-            className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
-          >
-            Submit
-          </button>
+          {submittedData?.length > 0 ? (
+            <h2 className="font-bold">
+              You have participated on this quiz before.{" "}
+              <Link
+                to="/course-player"
+                style={{ fontWeight: 500, color: "blueviolet" }}
+              >
+                Go to Homepage
+              </Link>
+            </h2>
+          ) : data?.length > 0 ? (
+            <button
+              type="button"
+              onClick={handleQuizSubmission}
+              className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
+            >
+              Submit
+            </button>
+          ) : null}
         </div>
       </section>
     </Layout>

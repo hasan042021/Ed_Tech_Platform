@@ -18,9 +18,20 @@ const QuizzItems = ({ data, formData, setFormData }) => {
   };
   return (
     <div className="mb-8">
-      <h1 className="text-2xl font-bold">{data && data[0].video_title}</h1>
-      <p className="text-sm text-slate-200">Each question contains 5 Mark</p>
+      <h1 className="text-2xl font-bold">
+        {data?.length > 0 && data[0].video_title}
+      </h1>
+      {data?.length > 0 && (
+        <p className="text-sm text-slate-200 my-4">
+          Each question contains 5 Mark
+        </p>
+      )}
       <div class="space-y-8 ">
+        {data?.length === 0 && (
+          <h1 className="text-2xl text-center">
+            No quiz related to this video
+          </h1>
+        )}
         {data?.map((quiz) => (
           <QuizItem quiz={quiz} handleChange={handleChange} />
         ))}
