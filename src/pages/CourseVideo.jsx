@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../components/common/Layout";
-import AssignmentSection from "../components/coursePlayer/AssignmentSection";
 import VideoDescription from "../components/coursePlayer/VideoDescription";
 import VideoItems from "../components/coursePlayer/VideoItems";
 import VideoPlayer from "../components/coursePlayer/VideoPlayer";
@@ -9,9 +8,10 @@ import Loader from "../components/ui/Loader";
 import { useGetVideoQuery } from "../features/videos/videosApi";
 
 const CourseVideo = () => {
+  const [show, setShow] = useState();
   const { videoId } = useParams();
   const { data, isLoading, isError, error } = useGetVideoQuery(videoId);
-  const [show, setShow] = useState(false);
+
   // decide what to render
   let content = null;
   if (isLoading) {
@@ -33,7 +33,6 @@ const CourseVideo = () => {
       <div className="col-span-full w-full space-y-8 lg:col-span-2">
         <VideoPlayer info={data} />
         <VideoDescription setShow={setShow} info={data} />
-        <AssignmentSection show={show} />
       </div>
     );
   }

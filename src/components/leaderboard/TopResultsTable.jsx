@@ -1,6 +1,7 @@
 import React from "react";
 
-const TopResultsTable = () => {
+const TopResultsTable = ({ leaderboard }) => {
+  // const topLeaderboard = leaderboard?.filter((student) => student.rank <= 20);
   return (
     <div className="my-8">
       <h3 className="text-lg font-bold">Top 20 Result</h3>
@@ -16,53 +17,19 @@ const TopResultsTable = () => {
         </thead>
 
         <tbody>
-          <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
-
-          <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
-
-          <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
-
-          <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
-
-          <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
-
-          <tr className="border-slate-600/50">
-            <td className="table-td text-center">4</td>
-            <td className="table-td text-center">Saad Hasan</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">50</td>
-            <td className="table-td text-center">100</td>
-          </tr>
+          {leaderboard
+            ?.filter((student) => student.rank <= 20)
+            .map((student) => (
+              <tr className="border-b border-slate-600/50">
+                <td className="table-td text-center">{student.rank}</td>
+                <td className="table-td text-center">{student.student_name}</td>
+                <td className="table-td text-center">{student.quizTotal}</td>
+                <td className="table-td text-center">
+                  {student.assignmentTotal}
+                </td>
+                <td className="table-td text-center">{student.total}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

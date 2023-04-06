@@ -31,7 +31,7 @@ export const studentPrivateRoutes = [
     component: CoursePlayer,
   },
   {
-    path: "leaderbord",
+    path: "leaderboard",
     name: "Leaderboard",
     component: LeaderBoard,
   },

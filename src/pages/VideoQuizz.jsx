@@ -50,7 +50,7 @@ const VideoQuizz = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/course-player");
+      navigate("/leaderboard");
     }
   }, [isSuccess]);
 
@@ -85,31 +85,41 @@ const VideoQuizz = () => {
   return (
     <Layout>
       <section className="py-6 bg-primary">
-        <div className="mx-auto max-w-7xl px-5 lg:px-0">
-          <QuizzItems
-            data={data}
-            formData={formData}
-            setFormData={setFormData}
-          />
+        <div
+          className={`mx-auto ${
+            submittedData?.length > 0 &&
+            "h-full flex items-center justify-center"
+          } max-w-7xl px-5 lg:px-0`}
+        >
           {submittedData?.length > 0 ? (
-            <h2 className="font-bold">
+            <h2 className="text-center font-bold text-xl">
               You have participated on this quiz before.{" "}
               <Link
-                to="/course-player"
+                to="/leaderboard"
                 style={{ fontWeight: 500, color: "blueviolet" }}
               >
-                Go to Homepage
+                See LeaderBoard
               </Link>
             </h2>
-          ) : data?.length > 0 ? (
-            <button
-              type="button"
-              onClick={handleQuizSubmission}
-              className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
-            >
-              Submit
-            </button>
-          ) : null}
+          ) : (
+            <>
+              <QuizzItems
+                data={data}
+                formData={formData}
+                setFormData={setFormData}
+              />
+
+              {data?.length > 0 && (
+                <button
+                  type="button"
+                  onClick={handleQuizSubmission}
+                  className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 "
+                >
+                  Submit
+                </button>
+              )}
+            </>
+          )}
         </div>
       </section>
     </Layout>
