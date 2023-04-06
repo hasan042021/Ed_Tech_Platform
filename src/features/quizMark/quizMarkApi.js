@@ -20,10 +20,10 @@ const quizMarkApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      providesTags: (result, error, arg) => [
+      invalidatesTags: (result, error, arg) => [
         "QuizMark",
-        { type: "SingleQuizMark", id: arg.videoId },
-        { type: "SubmittedQuiz", id: arg.studentId },
+        { type: "SingleQuizMark", id: arg.video_id },
+        { type: "SubmittedQuiz", id: arg.student_id },
       ],
     }),
   }),
