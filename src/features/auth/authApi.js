@@ -13,6 +13,13 @@ export const authApi = apiSlice.injectEndpoints({
         try {
           console.log("hello");
           const result = await queryFulfilled;
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({
+              accessToken: result.data.accessToken,
+              user: result.data.user,
+            })
+          );
           dispatch(userLogin(result.data));
         } catch (error) {}
       },
@@ -27,6 +34,13 @@ export const authApi = apiSlice.injectEndpoints({
         try {
           console.log("hello");
           const result = await queryFulfilled;
+          localStorage.setItem(
+            "auth",
+            JSON.stringify({
+              accessToken: result.data.accessToken,
+              user: result.data.user,
+            })
+          );
           dispatch(userLogin(result.data));
         } catch (error) {}
       },

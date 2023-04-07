@@ -2,12 +2,16 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import AdminOutlet from "./components/AdminOutlet";
 import StudentsOutlet from "./components/StudentsOutlet";
+import useAuthCheck from "./hooks/useAuthCheck";
 import Login from "./pages/Authentication/Login";
 import Registration from "./pages/Authentication/Registration";
 import { adminPrivateRoutes, studentPrivateRoutes } from "./routes/routes";
 
 function App() {
-  return (
+  const authCheck = useAuthCheck();
+  return !authCheck ? (
+    <p>Checking Authentication...</p>
+  ) : (
     <div className="App">
       <Router>
         <Routes>
