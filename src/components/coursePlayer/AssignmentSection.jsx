@@ -50,9 +50,9 @@ const AssignmentSection = ({ assignmentInfo, show }) => {
             <div>
               <span>Total mark of this assignment </span>
               {"    "}
-              <button className="px-4 mx-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+              <span className="px-4 mx-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
                 100
-              </button>
+              </span>
             </div>
             <div className="mb-4">
               <p className="font-bold text-slate-400 py-2 my-2">
