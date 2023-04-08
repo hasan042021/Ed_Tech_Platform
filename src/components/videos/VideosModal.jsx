@@ -14,7 +14,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: window.innerWidth < 600 ? "0%" : "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "#080E1B",
+    backgroundColor: "#2b8ea7",
     margin: 20,
     padding: 20,
     width: window.innerWidth < 600 ? 340 : 560,
@@ -27,9 +27,9 @@ const VideosModal = () => {
   // styling elements inside modal
   let btn, sub, input, input1, input2, input3, input4;
   function afterOpenModal() {
-    btn.style.color = "black";
+    btn.style.color = "#b0c0c8";
     btn.style.fontWeight = "bold";
-    btn.style.backgroundColor = "#35B3EE";
+    btn.style.backgroundColor = "#1e09a8";
     btn.style.padding = "5px 10px";
     btn.style.borderRadius = "5px";
     sub.style.display = "flex";
