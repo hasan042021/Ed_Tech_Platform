@@ -115,6 +115,15 @@
       "duration": "22:21",
       "createdAt": "2023-04-04T08:59:51.458Z",
       "id": 5
+    },
+    {
+      "title": "Quantum Computers, explained with MKBHD",
+      "description": "You’ve heard about quantum computers. Maybe you’ve seen the “race for quantum supremacy” between governments and companies, or read that quantum computers will break all encryption, or heard terms like “qubits” or “superposition” or “quantum mechanics” in a confusing tv segment. But you might be wondering… what does a quantum computer actually DO? And how could it actually affect my life?\n\n@mkbhd and I had the same questions. Marques and I both realized quantum computing was this big important technology… that we didn’t really understand. So we decided to go on an adventure to learn the truth about quantum computers. And we're taking you with us, to show you what we learn as we learn it. But more importantly, to show you how these crazy computers might actually impact YOUR life... sooner than you think.",
+      "url": "https://www.youtube.com/embed/e3fz3dqhN44",
+      "views": "838k",
+      "duration": "16:10",
+      "createdAt": "2023-04-08T07:23:23.872Z",
+      "id": 6
     }
   ],
   "assignments": [
@@ -138,6 +147,13 @@
       "video_title": "Build a Popup With JavaScript",
       "totalMark": 100,
       "id": 3
+    },
+    {
+      "title": "Assignment 6 - test",
+      "video_id": 6,
+      "video_title": "Quantum Computers, explained with MKBHD",
+      "totalMark": 100,
+      "id": 4
     }
   ],
   "quizzes": [
@@ -224,6 +240,34 @@
           "isCorrect": false
         }
       ]
+    },
+    {
+      "question": "Test quiz 6 - test",
+      "video_id": 6,
+      "video_title": "Quantum Computers, explained with MKBHD",
+      "options": [
+        {
+          "id": 1,
+          "option": "test1",
+          "isCorrect": false
+        },
+        {
+          "id": 2,
+          "option": "test2",
+          "isCorrect": true
+        },
+        {
+          "id": 3,
+          "option": "test3",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "option": "test4",
+          "isCorrect": true
+        }
+      ],
+      "id": 4
     }
   ],
   "assignmentMark": [
@@ -274,6 +318,18 @@
       "repo_link": "https://github.com/Learn-with-Sumit/think-in-a-redux-way",
       "status": "published",
       "id": 9
+    },
+    {
+      "student_id": 3,
+      "student_name": "Akash Ahmed",
+      "assignment_id": 4,
+      "title": "Assignment 6 - test",
+      "totalMark": 100,
+      "createdAt": "2023-04-08T07:28:22.812Z",
+      "mark": 85,
+      "repo_link": "https://github.com/Learn-with-Sumit/think-in-a-redux-way",
+      "status": "published",
+      "id": 10
     }
   ],
   "quizMark": [
@@ -384,6 +440,18 @@
       "totalMark": 10,
       "mark": 0,
       "id": 9
+    },
+    {
+      "student_id": 3,
+      "student_name": "Akash Ahmed",
+      "video_id": 6,
+      "video_title": "Quantum Computers, explained with MKBHD",
+      "totalQuiz": 1,
+      "totalCorrect": 0,
+      "totalWrong": 1,
+      "totalMark": 5,
+      "mark": 0,
+      "id": 10
     }
   ]
 }

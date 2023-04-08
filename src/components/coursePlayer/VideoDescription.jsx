@@ -59,6 +59,12 @@ const VideoDescription = ({ info }) => {
           কুইজে অংশগ্রহণ করুন
         </Link>
       </div>
+      {show && (
+        <p className="mt-4  text-slate-400 font-semibold">
+          {" "}
+          Scroll down to see asignment information.
+        </p>
+      )}
       <p className="mt-4 text-sm text-slate-400 leading-6">{description}</p>
       {/* {data?.length > 0 && assignmentSubmitted?.length > 0 ? (
         
